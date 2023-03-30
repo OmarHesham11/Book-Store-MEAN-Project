@@ -9,6 +9,9 @@ import { CategoriesComponent } from './categories/categories.component';
 import { BooksComponent } from './books/books.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +21,13 @@ import { NotfoundComponent } from './notfound/notfound.component';
     CategoriesComponent,
     BooksComponent,
     AuthorsComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

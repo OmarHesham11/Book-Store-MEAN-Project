@@ -5,14 +5,16 @@ import { BooksComponent } from './books/books.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path:'' , redirectTo:'categories', pathMatch:'full'},
-  {path:'categories' , component:CategoriesComponent},
-  {path:'authors' , component:AuthorsComponent},
-  {path:'books' , component:BooksComponent},
-  {path:'login' , component:LoginComponent},
-  {path:'**' , component:NotfoundComponent},
+  {path:'' , redirectTo:'login', pathMatch:'full'},
+  {path:'admin/categories', component:CategoriesComponent},
+  {path:'admin/authors', component:AuthorsComponent},
+  {path:'admin/books', component:BooksComponent},
+  {path:'admin/login', component:LoginComponent},
+  {path:'register', component:RegisterComponent},
+  {path:'**', component:NotfoundComponent},
 ];
 
 @NgModule({
