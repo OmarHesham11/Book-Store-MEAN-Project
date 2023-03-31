@@ -30,14 +30,18 @@ export class Authadminservice {
 
 
     addCategory(newCategory: string)
-  {
-      this.categories.push({ id: this.categories.length +1 , category: newCategory});
+  {  
+     if(newCategory.trim()!=''){
+      this.categories.push({ id: this.categories.length +1 , category: newCategory});}
+      else{
+        alert('please enter category')
+      }  
   }
 
   deleteCategory(id: number): void {
     const index = this.categories.findIndex(el=> el.id === id)
     this.categories.splice(this.categories.findIndex(el => el.id == id), 1)
-    console.log(this.categories);
+    // console.log(this.categories);
   }
 
   editCategory(id: number, newCategory: string): void {
