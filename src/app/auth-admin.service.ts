@@ -41,7 +41,6 @@ export class Authadminservice {
   deleteCategory(id: number): void {
     const index = this.categories.findIndex(el=> el.id === id)
     this.categories.splice(this.categories.findIndex(el => el.id == id), 1)
-    // console.log(this.categories);
   }
 
   editCategory(id: number, newCategory: string): void {
