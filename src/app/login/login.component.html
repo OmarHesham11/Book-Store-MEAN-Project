@@ -11,7 +11,7 @@
             <label for="adminUserName">Admin name:</label>
             <input formControlName='adminUserName' class="form-control mb-2" type="text" id="adminUserName">
             <p class="text-danger" *ngIf="adminloginForm.get('adminUserName')?.errors?.['required'] && adminloginForm.get('adminUserName')?.touched">Admin User Name is required</p>
-            <p class="text-danger" *ngIf="adminloginForm.get('adminUserName')?.errors?.['pattern'] && adminloginForm.get('adminUserName')?.touched">Invalid User Name</p>
+            <p class="text-dangezzr" *ngIf="adminloginForm.get('adminUserName')?.errors?.['pattern'] && adminloginForm.get('adminUserName')?.touched">Invalid User Name</p>
 
         </div>
 

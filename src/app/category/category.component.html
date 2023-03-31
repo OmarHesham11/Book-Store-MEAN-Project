@@ -1,0 +1,99 @@
+<!-- <div ngif="category" class="category" >
+  <ul class="list-group mb-0 col-12">
+
+    <li class="list-group-item ">
+      <div class="form-check">
+        <div class="row">
+          <div class="col-10">
+            <label class="form-check-label" for="flexCheckDefault">
+              {{category.category}}
+            </label>
+          </div>
+          <div class="col-1 d-flex "> 
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+              <i class="fa">&#xf1f8;</i> 
+            </button>
+             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="editCategory(category.id)">
+               <i class="fa">&#xf044;</i> </button>
+          </div>
+        </div> 
+      </div>
+ 
+    
+
+
+
+
+      <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">delete</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               Sure to delete category?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="deleteCategory()">Save changes</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </li>
+  </ul>
+</div> -->
+
+
+<div ngif="category" class="category">
+  <table class="table table-striped" >
+    <tbody>
+      <tr>
+        <td>
+          <div class="form-check" >
+            <label class="form-check-label" for="flexCheckDefault">
+              {{category.category}}
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa">&#xf1f8;</i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="editCategory(category.id)">
+              <i class="fa">&#xf044;</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <div ngif="category" class="category">
+  <table class="table table-striped">
+    <tr>
+      <td>
+        <div class="form-check">
+          <label class="form-check-label" for="flexCheckDefault">
+            {{category.category}}
+          </label>
+        </div>
+      </td>
+      <td>
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa">&#xf1f8;</i>
+          </button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="editCategory(category.id)">
+            <i class="fa">&#xf044;</i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div> -->
