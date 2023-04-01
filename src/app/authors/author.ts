@@ -3,6 +3,6 @@ export interface Author {
     photo:string,
     firstname:string,
     lastname:string,
-    DOB:Date
+    DOB:any
     }
     

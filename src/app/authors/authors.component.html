@@ -40,7 +40,7 @@
     </div>
         <ng-template #content let-modal>
               <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">New Book</h4>
+                <h4 class="modal-title" id="modal-basic-title">New Author</h4>
                 <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -78,9 +78,9 @@
               <div class="form-group">
                 <label for="authorDateOfBirth">Author Date of Birth</label>
                 <div class="input-group">
-                  <input id="authorDateOfBirth" class="form-control" type="date" formControlName="authorDateOfBirth"><br>
+                  <input id="authorDateOfBirth" class="form-control" type="date" formControlName="DOB"><br>
                 </div>
-                <p class="text-danger" *ngIf="authorForm.get('authorDateOfBirth')?.errors?.['required'] && authorForm.get('authorDateOfBirth')?.touched">Author Date of Birth is required</p>
+                <p class="text-danger" *ngIf="authorForm.get('DOB')?.errors?.['required'] && authorForm.get('DOB')?.touched">Author Date of Birth is required</p>
               </div>
                   
                        
