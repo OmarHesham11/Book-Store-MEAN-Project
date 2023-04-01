@@ -1,1 +1,95 @@
-<p>authors works!</p>
+ <div class="container">
+
+    <div class="d-flex justify-content-end mb-3" style="margin-top: 10px;">
+      <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+        <i class="fa">&#xf02d;</i> Add Author
+      </button>
+    </div>
+  
+  <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Photo</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Date of Birth</th>
+          </tr>
+        </thead>
+        <tbody>
+      <tr *ngFor="let author of authors">
+            <td><span>{{author.id}}</span></td>
+            <td><span>{{author.photo}}</span></td>
+            <td><span>{{author.firstname}}</span></td>
+            <td><span>{{author.lastname}}</span></td>
+            <td><span>{{author.DOB}}</span></td>
+            <td>
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="deleteAuthor(author)">
+                  <i class="fa">&#xf1f8;</i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="edit(author)">
+                  <i class="fa">&#xf044;</i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+    </div>
+        <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">New Book</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="authorForm" (ngSubmit)="addAuthor()">
+                  
+                    <div class="form-group">
+                        <label for="authorPhoto">Author Photo</label>
+                        <div class="input-group">
+                          <input id="authorPhoto" class="form-control" type="file" accept="image/*" formControlName="authorPhoto">
+                        </div>
+                        <p class="text-danger" *ngIf="authorForm.get('authorPhoto')?.invalid && authorForm.get('authorPhoto')?.touched">Please select a photo</p>
+                    </div>
+                    <div class="form-group">
+                    <label for="authorFirstName">Author First Name</label>
+                    <div class="input-group">
+  
+                      <input id="authorFirstName" class="form-control" formControlName="authorFirstName"><br>
+  
+                    </div>
+              <p class="text-danger" *ngIf="authorForm.get('authorFirstName')?.errors?.['required'] && authorForm.get('authorFirstName')?.touched">Author First Name is required</p>
+                    </div>
+              <div class="form-group">
+                <label for="authorLastName">Author Last Name</label>
+                <div class="input-group">
+
+                  <input id="authorLastName" class="form-control" formControlName="authorLastName"><br>
+
+                </div>
+          <p class="text-danger" *ngIf="authorForm.get('authorLastName')?.errors?.['required'] && authorForm.get('authorLastName')?.touched">Author Last Name is required</p>
+
+              </div>
+          
+              <div class="form-group">
+                <label for="authorDateOfBirth">Author Date of Birth</label>
+                <div class="input-group">
+                  <input id="authorDateOfBirth" class="form-control" type="date" formControlName="authorDateOfBirth"><br>
+                </div>
+                <p class="text-danger" *ngIf="authorForm.get('authorDateOfBirth')?.errors?.['required'] && authorForm.get('authorDateOfBirth')?.touched">Author Date of Birth is required</p>
+              </div>
+                  
+                       
+             
+           <div class="text-center">
+             <button type="submit" [disabled]="authorForm.invalid" class="btn btn-info mt-3 ">Add Author</button>         
+            </div>   
+            </form>
+                </div>
+            </ng-template>
+  
+  

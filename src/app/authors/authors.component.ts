@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Author } from './author';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-authors',
@@ -6,49 +9,48 @@ import { Component } from '@angular/core';
   styleUrls: ['./authors.component.scss']
 })
 export class AuthorsComponent {
-//   books: Book[] = [];
+  authors: Author[] = [];
 
-//   bookForm: FormGroup;
-//   selectedBook: Book | null = null;
-//   content: any;
+  authorForm: FormGroup;
+  content: any;
 
-//   constructor(
-//     private modalService: NgbModal,
-//     private formBuilder: FormBuilder
-//   ) { 
-//     this.bookForm = this.formBuilder.group({
-//       bookPhoto: [null, Validators.required],
-//       bookName: [null, Validators.required],
-//       bookCategory: [null, Validators.required],
-//       bookAuthorId: [null, Validators.required]
-//     });
-//   }
+  constructor(
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder
+  ) { 
+    this.authorForm = this.formBuilder.group({
+       authorPhoto: [null, Validators.required],
+      authorFirstName: [null, Validators.required],
+     authorLastName: [null, Validators.required],
+      DOB: [null, Validators.required]
+    });
+  }
 
-//   addBook() {
-//     const newBook: Book = {
-//       id: this.books.length + 1,
-//       photo: this.bookForm.value.bookPhoto,
-//       name: this.bookForm.value.bookName,
-//       category: this.bookForm.value.bookCategory,
-//       authorId: this.bookForm.value.bookAuthorId
-//     };
-//     this.books.push(newBook);
-//     this.modalService.dismissAll();
-//     this.bookForm.reset();
-//   }
-//   edit(content: Book) {
-//     this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' });
+  addAuthor() {
+    const newAuthor: Author = {
+      id: this.authors.length + 1,
+      photo: this.authorForm.value.authorPhoto,
+      firstname: this.authorForm.value.authorFirstName,
+      lastname: this.authorForm.value.authorLastName,
+      DOB: this.authorForm.value.DOB
+    };
+    this.authors.push(newAuthor);
+    this.modalService.dismissAll();
+    this.authorForm.reset();
+  }
+  edit(content: Author) {
+    this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' });
     
-//   }
+  }
 
-//   deleteBook(book: Book) {
-//     const index = this.books.indexOf(book);
-//     if (index !== -1) {
-//       this.books.splice(index, 1);
-//     }
-//   }
+  deleteAuthor(author: Author) {
+    const index = this.authors.indexOf(author);
+    if (index !== -1) {
+      this.authors.splice(index, 1);
+    }
+  }
 
-//   open(content: any) {
-//     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-//   }
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
 }
