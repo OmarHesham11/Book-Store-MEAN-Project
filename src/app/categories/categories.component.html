@@ -1,36 +1,63 @@
+ <div class="container">
 
-<section class="vh-200" >
-  <div class="container py-5 h-100" ngif="todo">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col col-xl-10">
-              <div class="card" style="border-radius: 15px; ">
-                  <div class="card-body p-5">
-                      <div class="input-group mb-3">
-                          <input type="text"  matInput class="form-control" aria-describedby="basic-addon2"
-                          [(ngModel)]="newCategory"  placeholder="Enter Category" >
-                          <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="button" (click)="addCategory()">
-                                  Add </button>
-                                  
-                          </div>
-                      </div>
-                      <table class="table table-striped ">
-                        <thead>
-                          <tr>
-                            <th scope="col" >Category</th>
-                            <th scope="col" class="text-end">Actions</th>
-                          </tr>
-                        </thead>
-                      </table>
-                      <app-category *ngFor="let category of categories " [category]="category"></app-category>
+  <div class="d-flex justify-content-end mb-3" style="margin-top: 10px;">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa">&#xf02d;</i> Add Category
+    </button>
+  </div>
+
+  <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories">
+          <td><span>{{category.id}}</span></td>
+          <td><span>{{category.name}}</span></td>
+  
+          <td>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="deleteCategory(category)">
+                <i class="fa">&#xf1f8;</i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" (click)="edit(category)">
+                <i class="fa">&#xf044;</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">New Book</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+                <div class="form-group">
+                  <label for="categoryName">Category Name</label>
+                  <div class="input-group">
+
+                    <input id="categoryName" class="form-control" formControlName="categoryName"><br>
 
                   </div>
+            <p class="text-danger" *ngIf="categoryForm.get('categoryName')?.errors?.['required'] && categoryForm.get('categoryName')?.touched">Ctegory Name is required</p>
+
+                </div>
+                <div class="text-center">
+
+           <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-info mt-3 ">Add Category</button>         
+                </div>
+          </form>
               </div>
-          </div>
-      </div>
-  </div>
-  
-</section>
+          </ng-template>
 
 
 

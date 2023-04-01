@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Admin } from './admin';
-import { Category } from './category';
+import { Category } from './categories/category';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,7 @@ export class Authadminservice {
     adminUserName:"admin" ,
     password: "admin"
   };
-  categories: Category[] =[];
-   
-  newCategory: string = ''; 
+
 
   constructor(private _router:Router) { }
 
@@ -26,32 +24,6 @@ export class Authadminservice {
       alert("Wrong password or Admin name")
     }
   } 
-
-
-    addCategory(newCategory: string)
-  {  
-     if(newCategory.trim()!=''){
-      this.categories.push({ id: this.categories.length +1 , category: newCategory});}
-      else{
-        alert('please enter category')
-      }  
-  }
-
-  deleteCategory(id: number): void {
-    const index = this.categories.findIndex(el=> el.id === id)
-    this.categories.splice(this.categories.findIndex(el => el.id == id), 1)
-  }
-
-  editCategory(id: number, newCategory: string): void {
-    const index = this.categories.findIndex(el => el.id === id);
-    if (index !== -1) {
-      this.categories[index].category = newCategory;
-    }
-  }
-
-  getAllCategory(): Category[] {
-    return this.categories;
-  }
-  
+ 
 
 }

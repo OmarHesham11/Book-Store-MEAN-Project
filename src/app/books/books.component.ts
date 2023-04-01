@@ -12,6 +12,8 @@ export class BooksComponent {
   books: Book[] = [];
 
   bookForm: FormGroup;
+  selectedBook: Book | null = null;
+  content: any;
 
   constructor(
     private modalService: NgbModal,
@@ -37,9 +39,30 @@ export class BooksComponent {
     this.modalService.dismissAll();
     this.bookForm.reset();
   }
+  edit(content: Book) {
+    this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' });
+    
+  }
+
+  deleteBook(book: Book) {
+    const index = this.books.indexOf(book);
+    if (index !== -1) {
+      this.books.splice(index, 1);
+    }
+  }
 
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
 }
+
+
+
+
+
+
+
+
+
+
