@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryComponent } from './category/category.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CategoryComponent } from './category/category.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgbModule,
 
   ],
 

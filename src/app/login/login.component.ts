@@ -19,7 +19,6 @@ export class LoginComponent {
 
     submitRegisterForm(adminloginForm:FormGroup) {
       this._authAdmin.loginAdmin(adminloginForm.value)
-      // console.log(adminloginForm.value);
     }
 
 }

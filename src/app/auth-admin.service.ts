@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Admin } from './admin';
-// import { CategoriesComponent } from './categories/categories.component';
 import { Category } from './category';
 
 @Injectable({
@@ -54,4 +53,5 @@ export class Authadminservice {
     return this.categories;
   }
   
+
 }

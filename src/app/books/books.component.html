@@ -1,1 +1,154 @@
-<p>books works!</p>
+<div class="container">
+
+    <div>
+      <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+        <i class="fa">&#xf02d;</i> Add Book
+      </button>
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Auther</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td><span>{{book.id}}</span></td>
+          <td><span>{{book.photo}}</span></td>
+          <td><span>{{book.name}}</span></td>
+          <td><span>{{book.category}}</span></td>
+          <td><span>{{book.authorId}}</span></td>
+          <td>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal">
+                <i class="fa">&#xf1f8;</i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal">
+                <i class="fa">&#xf044;</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  
+  <!-- <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Book</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="addBook(bookPhoto.value, bookName.value, bookCategory.value, bookAuthorId.value)">
+            
+            <div class="form-group">
+                <label for="bookName">Book Name</label>
+                <div class="input-group">
+                  <input id="bookName" class="form-control" #bookName required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="bookCategory">Book Category</label>
+                <div class="input-group">
+                  <select id="bookCategory" class="form-control" #bookCategory required>
+                    <option value="">Select a category</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="romance">Romance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="bookAuthorId">Author </label>
+                <div class="input-group">
+                    <select id="bookAuthorId" class="form-control" #bookAuthorId required>
+                        <option value="">Somaya</option>
+                        <option value="fiction">Hend</option>
+                        <option value="non-fiction">Lena</option>
+                        <option value="mystery">Omar</option>
+                        <option value="romance">Abd-El Rahman</option>
+                      </select>               
+                     </div>
+              </div>
+            <div class="form-group">
+                <label for="bookPhoto">Book Photo</label>
+                <div class="input-group">
+                  <input id="bookPhoto" class="form-control" #bookPhoto type="file" accept="image/*" required>
+                </div>
+            </div>
+
+        
+         
+            <button type="submit" class="btn btn-outline-dark">Add Book</button>
+          </form> -->
+          <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">New Book</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="bookForm" (ngSubmit)="addBook()">
+                <div class="form-group">
+                  <label for="bookName">Book Name</label>
+                  <div class="input-group">
+
+                    <input id="bookName" class="form-control" formControlName="bookName"><br>
+
+                  </div>
+            <p class="text-danger" *ngIf="bookForm.get('bookName')?.errors?.['required'] && bookForm.get('bookName')?.touched">Book Name is required</p>
+
+                </div>
+                <div class="form-group">
+                  <label for="bookCategory">Book Category</label>
+                  <div class="input-group">
+                    <select id="bookCategory" class="form-control" formControlName="bookCategory">
+                      <option value="">Select a category</option>
+                      <option value="fiction">Fiction</option>
+                      <option value="non-fiction">Non-Fiction</option>
+                      <option value="mystery">Mystery</option>
+                      <option value="romance">Romance</option>
+
+                    </select>
+                  </div>
+                  <p class="text-danger" *ngIf="bookForm.get('bookCategory')?.invalid && bookForm.get('bookCategory')?.touched">Please select a category</p>
+                
+                </div>
+                <div class="form-group">
+                  <label for="bookAuthorId">Author </label>
+                  <div class="input-group">
+                    <select id="bookAuthorId" class="form-control" formControlName="bookAuthorId">
+                      <option value="">Somaya</option>
+                      <option value="fiction">Hend</option>
+                      <option value="non-fiction">Lena</option>
+                      <option value="mystery">Omar</option>
+                      <option value="romance">Abd-El Rahman</option>
+                    </select>               
+                  </div>
+                  <p class="text-danger" *ngIf="bookForm.get('bookAuthorId')?.invalid && bookForm.get('bookAuthorId')?.touched">Please select an author</p>
+                
+                </div>
+                <div class="form-group">
+                  <label for="bookPhoto">Book Photo</label>
+                  <div class="input-group">
+                    <input id="bookPhoto" class="form-control" type="file" accept="image/*" formControlName="bookPhoto">
+                  </div>
+                  <p class="text-danger" *ngIf="bookForm.get('bookPhoto')?.invalid && bookForm.get('bookPhoto')?.touched">Please select a photo</p>
+                </div>
+                <button type="submit" class="btn btn-outline-dark">Add Book</button>
+              </form>
+            </div>
+          </ng-template>
+
+
+          <!-- <p class="text-danger" *ngIf="bookForm.get('bookCategory')?.errors?.['required'] && bookForm.get('bookCategory')?.touched">Book Category is required</p> -->
