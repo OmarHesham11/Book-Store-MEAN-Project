@@ -35,6 +35,7 @@ export class CategoriesComponent {
     this.modalService.dismissAll();
     this.categoryForm.reset();
   }
+  
   edit(content: Category) {
     this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title' });
     
